@@ -1,4 +1,4 @@
-package hellcoding.heech.controller;
+package hellcoding.heech.learn.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,18 +11,18 @@ public class HelloController {
     @GetMapping("hello")
     public String hello(Model model) {
         model.addAttribute("data", "hello!! heechul");
-        return "hello";
+        return "learn/hello";
     }
 
     @GetMapping("hello-mvc")
     public String helloMvs(@RequestParam(value = "name", required = true) String name, Model model) {
         model.addAttribute("name", name);
-        return "hello-template";
+        return "learn/hello-template";
     }
 
     @GetMapping("hello-world")
     public String helloWorld(Model model) {
         model.addAttribute("data", "Hello World!!!");
-        return "hello-world";
+        return "learn/hello-world";
     }
 }
