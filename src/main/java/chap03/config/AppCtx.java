@@ -33,4 +33,20 @@ public class AppCtx {
     public MemberListPrinter listPrinter() {
         return new MemberListPrinter(memberDao(), memberPrinter());
     }
+
+    @Bean
+    public MemberInfoPrinter infoPrinter() {
+        MemberInfoPrinter infoPrinter = new MemberInfoPrinter();
+        infoPrinter.setMemberDao(memberDao());
+        infoPrinter.setPrinter(memberPrinter());
+        return infoPrinter;
+    }
+
+    @Bean
+    public VersionPrinter versionPrinter() {
+        VersionPrinter versionPrinter = new VersionPrinter();
+        versionPrinter.setMajorVersion(5);
+        versionPrinter.setMinorVersion(0);
+        return versionPrinter;
+    }
 }
