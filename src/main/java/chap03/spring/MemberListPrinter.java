@@ -14,6 +14,7 @@ public class MemberListPrinter {
 
 	public void printAll() {
 		Collection<Member> members = memberDao.selectAll();
+		System.out.println(members);
 		members.forEach(m -> printer.print(m));
 	}
 

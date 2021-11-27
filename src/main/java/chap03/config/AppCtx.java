@@ -1,9 +1,6 @@
 package chap03.config;
 
-import chap03.spring.ChangePasswordService;
-import chap03.spring.Member;
-import chap03.spring.MemberDao;
-import chap03.spring.MemberRegisterService;
+import chap03.spring.*;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 
@@ -25,5 +22,15 @@ public class AppCtx {
         ChangePasswordService pwdSvc = new ChangePasswordService();
         pwdSvc.setMemberDao(memberDao());
         return pwdSvc;
+    }
+
+    @Bean
+    public MemberPrinter memberPrinter() {
+        return new MemberPrinter();
+    }
+
+    @Bean
+    public MemberListPrinter listPrinter() {
+        return new MemberListPrinter(memberDao(), memberPrinter());
     }
 }
