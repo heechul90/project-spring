@@ -2,7 +2,7 @@ package chap03.main;
 
 import chap03.config.AppConf1;
 import chap03.config.AppConf2;
-import chap03.config.AppCtx;
+import chap03.config.AppConfImport;
 import chap03.spring.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,13 +11,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class MainForSpring {
+public class MainForImport {
 
     private static ApplicationContext ctx = null;
 
     public static void main(String[] args) throws IOException {
-        ctx = new AnnotationConfigApplicationContext(AppCtx.class);
 
+        ctx = new AnnotationConfigApplicationContext(AppConfImport.class);
+        
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
             System.out.println("명령어를 입력하세요.:");
