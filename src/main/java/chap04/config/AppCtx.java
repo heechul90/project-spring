@@ -1,6 +1,7 @@
-package chap03.config;
+package chap04.config;
 
-import chap03.spring.*;
+import chap04.spring.*;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,32 +15,38 @@ public class AppCtx {
 
     @Bean
     public MemberRegisterService memberRegSvc() {
-        return new MemberRegisterService(memberDao());
+        return new MemberRegisterService();
     }
 
     @Bean
     public ChangePasswordService changePwdSvc() {
-        ChangePasswordService pwdSvc = new ChangePasswordService();
-        pwdSvc.setMemberDao(memberDao());
-        return pwdSvc;
+        return new ChangePasswordService();
+    }
+
+//    @Bean
+//    public MemberPrinter memberPrinter() {
+//        return new MemberPrinter();
+//    }
+
+    @Bean
+    @Qualifier("printer")
+    public MemberPrinter memberPrinter1() {
+        return new MemberPrinter();
     }
 
     @Bean
-    public MemberPrinter memberPrinter() {
+    public MemberPrinter memberPrinter2() {
         return new MemberPrinter();
     }
 
     @Bean
     public MemberListPrinter listPrinter() {
-        return new MemberListPrinter(memberDao(), memberPrinter());
+        return new MemberListPrinter();
     }
 
     @Bean
     public MemberInfoPrinter infoPrinter() {
-        MemberInfoPrinter infoPrinter = new MemberInfoPrinter();
-        infoPrinter.setMemberDao(memberDao());
-        infoPrinter.setPrinter(memberPrinter());
-        return infoPrinter;
+        return new MemberInfoPrinter();
     }
 
     @Bean
