@@ -10,6 +10,7 @@ repositories {
 
 dependencies {
     compile 'org.springframework:spring-context:5.0.2.RELEASE'
+    compile 'org.aspectj:aspectjweaver:1.8.13' // AspectJ 패턴을 쓰기 위한 의존 대상 aspectjweaver
 }
 
 task wrapper(type: Wrapper) {
