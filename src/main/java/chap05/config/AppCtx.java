@@ -1,5 +1,6 @@
 package chap05.config;
 
+import chap05.spring.MemberDao;
 import chap05.spring.MemberPrinter;
 import chap05.spring.MemberSummaryPrinter;
 import chap05.spring.VersionPrinter;
