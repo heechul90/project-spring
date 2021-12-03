@@ -10,6 +10,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         AbstractApplicationContext ctx = new AnnotationConfigApplicationContext(AppCtx.class);
         Client client = ctx.getBean(Client.class);
+
         client.send();
 
         ctx.close();
