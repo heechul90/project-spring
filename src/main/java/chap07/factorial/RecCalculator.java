@@ -1,4 +1,4 @@
-package chap07;
+package chap07.factorial;
 
 public class RecCalculator implements Calculator {
 
