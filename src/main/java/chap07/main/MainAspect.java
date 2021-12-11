@@ -2,6 +2,7 @@ package chap07.main;
 
 import chap07.config.AppCtx;
 import chap07.factorial.Calculator;
+import chap07.factorial.RecCalculator;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MainAspect {
