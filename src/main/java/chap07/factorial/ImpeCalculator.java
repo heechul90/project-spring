@@ -8,6 +8,7 @@ public class ImpeCalculator implements Calculator {
         for (long i = 1; i <= num; i++) {
             result *= i;
         }
+        System.out.println("zzzzzz"+result);
         return result;
     }
 }
