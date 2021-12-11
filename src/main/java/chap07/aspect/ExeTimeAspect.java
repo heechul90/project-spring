@@ -11,7 +11,7 @@ import java.util.Arrays;
 @Aspect
 public class ExeTimeAspect {
 
-    @Pointcut("execution(public * chap07..*(..))")
+    @Pointcut("execution(public * chap07.factorial..*(..))")
     private void publicTarget() {
 
     }
