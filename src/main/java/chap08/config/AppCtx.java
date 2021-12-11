@@ -1,7 +1,6 @@
 package chap08.config;
 
-import chap08.spring.ChangePasswordService;
-import chap08.spring.MemberDao;
+import chap08.spring.*;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -47,4 +46,26 @@ public class AppCtx {
         return pwdSvc;
     }
 
+    @Bean
+    public MemberRegisterService memberRegisterService() {
+        return new MemberRegisterService(memberDao());
+    }
+
+    @Bean
+    public MemberPrinter memberPrinter() {
+        return new MemberPrinter();
+    }
+
+    @Bean
+    public MemberListPrinter memberListPrinter() {
+        return new MemberListPrinter(memberDao(), memberPrinter());
+    }
+
+    @Bean
+    public MemberInfoPrinter memberInfoPrinter() {
+        MemberInfoPrinter infoPrinter = new MemberInfoPrinter();
+        infoPrinter.setMemberDao(memberDao());
+        infoPrinter.setPrinter(memberPrinter());
+        return infoPrinter;
+    }
 }
