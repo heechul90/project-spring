@@ -20,8 +20,9 @@
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>
-                config.MvcConfig
-                config.ControllerConfig
+                study.spring5.config.MemberConfig
+                study.spring5.config.MvcConfig
+                study.spring5.config.ControllerConfig
             </param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>

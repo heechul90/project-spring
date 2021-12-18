@@ -1,4 +1,4 @@
-package study.spring5.chap09.controller;
+package study.spring5.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +10,7 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello(@RequestParam(value = "name", required = false) String name, Model model) {
-        model.addAttribute("greeting", name);
+        model.addAttribute("name", name);
         return "hello";
 
     }

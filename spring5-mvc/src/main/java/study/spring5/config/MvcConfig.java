@@ -1,4 +1,4 @@
-package config;
+package study.spring5.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;

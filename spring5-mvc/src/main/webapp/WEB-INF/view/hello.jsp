@@ -5,6 +5,6 @@
     <title>Hello</title>
 </head>
 <body>
-인사말: ${name}
+    인사말: ${name}
 </body>
 </html>
