@@ -1,12 +1,17 @@
 package study.spring5.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import study.spring5.controller.HelloController;
 import study.spring5.controller.RegisterController;
+import study.spring5.service.MemberRegisterService;
 
 @Configuration
 public class ControllerConfig {
+
+    @Autowired
+    private MemberRegisterService memberRegisterService;
 
     @Bean
     public HelloController helloController() {
@@ -15,6 +20,8 @@ public class ControllerConfig {
 
     @Bean
     public RegisterController registerController() {
-        return new RegisterController();
+        RegisterController registerController = new RegisterController();
+        registerController.setMemberRegisterService(memberRegisterService);
+        return registerController;
     }
 }
