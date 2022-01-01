@@ -14,9 +14,4 @@ public class HelloController {
         return "hello";
     }
 
-    @GetMapping("/hello/hello")
-    public String helloHello(@RequestParam(value = "name", required = false) String name, Model model) {
-        model.addAttribute("name", name);
-        return "hello";
-    }
 }
