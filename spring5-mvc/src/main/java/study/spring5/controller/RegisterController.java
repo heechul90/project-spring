@@ -2,6 +2,7 @@ package study.spring5.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import study.spring5.error.DuplicateMemberException;
 import study.spring5.service.MemberRegisterService;
@@ -49,11 +50,16 @@ public class RegisterController {
     }
 
     @PostMapping("/step3")
-    public String handleStep3(RegisterRequest registerRequest) {
+    public String handleStep3(RegisterRequest registerRequest, Errors errors) {
+        new RegisterRequestValidator().validate(registerRequest, errors);
+        if (errors.hasErrors()) {
+            return "register/step2";
+        }
         try {
             memberRegisterService.regist(registerRequest);
             return "register/step3";
         } catch (DuplicateMemberException e) {
+            errors.rejectValue("email", "duplicate");
             return "register/step2";
         }
     }
