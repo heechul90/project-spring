@@ -4,15 +4,15 @@ import java.util.List;
 
 public class AnsweredData {
 
-    private List<String> response;
+    private List<String> responses;
     private Respondent res;
 
-    public List<String> getResponse() {
-        return response;
+    public List<String> getResponses() {
+        return responses;
     }
 
-    public void setResponse(List<String> response) {
-        this.response = response;
+    public void setResponses(List<String> responses) {
+        this.responses = responses;
     }
 
     public Respondent getRes() {
