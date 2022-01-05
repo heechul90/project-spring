@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <head>
     <title>설문조사</title>
@@ -13,23 +14,16 @@
 <body>
     <h2>설문조사</h2>
     <form method="post">
-        <p>
-            1. 당신의 역학을<br/>
-            <label><input type="radio" name="responses[0]" value="서버">서버개발자</label>
-            <label><input type="radio" name="responses[0]" value="프론트">프론트개발자</label>
-            <label><input type="radio" name="responses[0]" value="풀스택">풀스택개발자</label>
-
-        </p>
-        <p>
-            2. 가장 많이 사용하는 개발도구는?<br/>
-            <label><input type="radio" name="responses[1]" value="Eclipse">Eclipse</label>
-            <label><input type="radio" name="responses[1]" value="Intellij">Intellij</label>
-            <label><input type="radio" name="responses[1]" value="Sublime">Sublime</label>
-        </p>
-        <p>
-            3. 하고싶은 말<br/>
-            <input type="text" name="responses[2]">
-        </p>
+        <c:forEach var="question" items="${questions}" varStatus="status">
+            <p>
+                ${status.index + 1}. ${question.title}<br/>
+                <c:if test="${question.choice}">
+                    <c:forEach var="option" items="${question.options}">
+                        <label><input type="radio" name="responses[${status.index}]" value="${option}">${option}</label>
+                    </c:forEach>
+                </c:if>
+            </p>
+        </c:forEach>
         <p>
             <label>응답자 위치:<br/>
                 <input type="text" name="res.location">
