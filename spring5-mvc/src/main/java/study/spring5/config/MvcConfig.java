@@ -12,10 +12,11 @@ import study.spring5.controller.RegisterRequestValidator;
 @EnableWebMvc
 public class MvcConfig implements WebMvcConfigurer {
 
-    @Override
+    /*@Override
     public Validator getValidator() {
         return new RegisterRequestValidator();
-    }
+    }*/
+
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();

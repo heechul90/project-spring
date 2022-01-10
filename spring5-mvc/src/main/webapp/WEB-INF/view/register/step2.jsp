@@ -18,7 +18,7 @@
         <p>
             <label><spring:message code="email"/>:<br/>
                 <form:input path="email"/>
-                <form:errors path="email" element="div" delimiter=""/>
+                <form:errors path="email"/>
             </label>
         </p>
         <p>

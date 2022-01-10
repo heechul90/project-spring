@@ -9,7 +9,6 @@ import study.spring5.error.DuplicateMemberException;
 import study.spring5.service.MemberRegisterService;
 import study.spring5.service.RegisterRequest;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -53,7 +52,7 @@ public class RegisterController {
 
     @PostMapping("/step3")
     public String handleStep3(@Valid RegisterRequest registerRequest, Errors errors) {
-        new RegisterRequestValidator().validate(registerRequest, errors);
+//        new RegisterRequestValidator().validate(registerRequest, errors);
         if (errors.hasErrors()) {
             return "register/step2";
         }
@@ -66,8 +65,8 @@ public class RegisterController {
         }
     }
 
-    @InitBinder
+    /*@InitBinder
     protected void initBinder(WebDataBinder binder) {
         binder.setValidator(new RegisterRequestValidator());
-    }
+    }*/
 }
