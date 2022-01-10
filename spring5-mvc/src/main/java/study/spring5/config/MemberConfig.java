@@ -7,6 +7,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import study.spring5.domain.MemberDao;
+import study.spring5.service.AuthService;
 import study.spring5.service.ChangePasswordService;
 import study.spring5.service.MemberRegisterService;
 
@@ -51,5 +52,12 @@ public class MemberConfig {
         ChangePasswordService changepasswordService = new ChangePasswordService();
         changepasswordService.setMemberDao(memberDao());
         return changepasswordService;
+    }
+
+    @Bean
+    public AuthService authService() {
+        AuthService authService = new AuthService();
+        authService.setMemberDao(memberDao());
+        return authService;
     }
 }

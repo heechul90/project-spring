@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import study.spring5.controller.HelloController;
+import study.spring5.controller.LoginController;
 import study.spring5.controller.RegisterController;
+import study.spring5.service.AuthService;
 import study.spring5.service.MemberRegisterService;
 import study.spring5.survey.SurveyController;
 
@@ -13,6 +15,9 @@ public class ControllerConfig {
 
     @Autowired
     private MemberRegisterService memberRegisterService;
+
+    @Autowired
+    private AuthService authService;
 
     @Bean
     public HelloController helloController() {
@@ -29,5 +34,12 @@ public class ControllerConfig {
     @Bean
     public SurveyController surveyController() {
         return new SurveyController();
+    }
+
+    @Bean
+    public LoginController loginController() {
+        LoginController controller = new LoginController();
+        controller.setAuthService(authService);
+        return controller;
     }
 }
