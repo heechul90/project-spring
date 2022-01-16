@@ -17,6 +17,3 @@
   - intellij
   - gradle
 - java : 1.8
-
-
-
