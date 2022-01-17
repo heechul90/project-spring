@@ -17,13 +17,13 @@
     <form:form modelAttribute="loginCommand">
         <form:errors />
         <p>
-            <label><spring:message code="email" />:<br>
+            <label><spring:message code="email" />:<br><br>
                 <form:input path="email" />
                 <form:errors path="email"/>
             </label>
         </p>
         <p>
-            <label><spring:message code="password" />:<br>
+            <label><spring:message code="password" />:<br><br>
                 <form:password path="password" />
                 <form:errors path="password"/>
             </label>
