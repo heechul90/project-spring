@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import study.spring5.controller.HelloController;
 import study.spring5.controller.LoginController;
+import study.spring5.controller.LogoutController;
 import study.spring5.controller.RegisterController;
 import study.spring5.service.AuthService;
 import study.spring5.service.MemberRegisterService;
@@ -41,5 +42,10 @@ public class ControllerConfig {
         LoginController controller = new LoginController();
         controller.setAuthService(authService);
         return controller;
+    }
+
+    @Bean
+    public LogoutController logoutController() {
+        return new LogoutController();
     }
 }
