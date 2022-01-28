@@ -10,6 +10,9 @@ import study.spring5.domain.AuthInfo;
 import study.spring5.error.WrongIdPasswordException;
 import study.spring5.service.AuthService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("login")
 public class LoginController {
@@ -26,16 +29,17 @@ public class LoginController {
     }
 
     @PostMapping
-    public String submit(LoginCommand loginCommand, Errors errors) {
+    public String submit(LoginCommand loginCommand, Errors errors, HttpSession session) {
         new LoginCommandValidator().validate(loginCommand, errors);
         if (errors.hasErrors()) {
             return "login/loginForm";
         }
 
         try {
-            AuthInfo authenticate = authService.authenticate(loginCommand.getEmail(), loginCommand.getPassword());
+            AuthInfo authInfo = authService.authenticate(loginCommand.getEmail(), loginCommand.getPassword());
 
-            // TODO 세션에 authInfo 를 저장해야함
+            session.setAttribute("authInfo", authInfo);
+
             return "login/loginSuccess";
         } catch (WrongIdPasswordException e) {
             errors.reject("idPasswordNotMatching");
