@@ -3,11 +3,9 @@ package study.spring5.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import study.spring5.controller.HelloController;
-import study.spring5.controller.LoginController;
-import study.spring5.controller.LogoutController;
-import study.spring5.controller.RegisterController;
+import study.spring5.controller.*;
 import study.spring5.service.AuthService;
+import study.spring5.service.ChangePasswordService;
 import study.spring5.service.MemberRegisterService;
 import study.spring5.survey.SurveyController;
 
@@ -19,6 +17,9 @@ public class ControllerConfig {
 
     @Autowired
     private AuthService authService;
+
+    @Autowired
+    private ChangePasswordService changePasswordService;
 
     @Bean
     public HelloController helloController() {
@@ -47,5 +48,12 @@ public class ControllerConfig {
     @Bean
     public LogoutController logoutController() {
         return new LogoutController();
+    }
+
+    @Bean
+    public ChangePwdController changePwdController() {
+        ChangePwdController controller = new ChangePwdController();
+        controller.setChangePasswordService(changePasswordService);
+        return controller;
     }
 }
