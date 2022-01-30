@@ -34,6 +34,9 @@ public class ChangePwdController {
             return "login/changePwdForm";
         }
         AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+        if (authInfo == null) {
+            return "redirect:/login";
+        }
         try {
             changePasswordService.changePassword(
                     authInfo.getEmail(),

@@ -7,6 +7,7 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.validation.Validator;
 import org.springframework.web.servlet.config.annotation.*;
 import study.spring5.controller.RegisterRequestValidator;
+import study.spring5.interceptor.AuthCheckInterceptor;
 
 @Configuration
 @EnableWebMvc
@@ -32,11 +33,21 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/main").setViewName("register/main");
     }
 
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(authCheckInterceptor()).addPathPatterns("/edit/**");
+    }
+
     @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource ms = new ResourceBundleMessageSource();
         ms.setBasenames("message.label");
         ms.setDefaultEncoding("UTF-8");
         return ms;
+    }
+
+    @Bean
+    public AuthCheckInterceptor authCheckInterceptor() {
+        return new AuthCheckInterceptor();
     }
 }
