@@ -6,12 +6,13 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import study.spring5.command.LoginCommand;
 import study.spring5.domain.AuthInfo;
 import study.spring5.error.WrongIdPasswordException;
 import study.spring5.service.AuthService;
+import study.spring5.validator.LoginCommandValidator;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 

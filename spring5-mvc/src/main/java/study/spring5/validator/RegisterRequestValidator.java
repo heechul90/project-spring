@@ -1,4 +1,4 @@
-package study.spring5.controller;
+package study.spring5.validator;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;

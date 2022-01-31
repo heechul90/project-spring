@@ -1,4 +1,4 @@
-package study.spring5.controller;
+package study.spring5.command;
 
 public class LoginCommand {
 

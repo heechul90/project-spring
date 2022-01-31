@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -91,5 +92,24 @@ public class MemberDao {
         Integer count = jdbcTemplate.queryForObject(
                 "select count(*) from MEMBER", Integer.class);
         return count;
+    }
+
+    public List<Member> selectByRegdate(LocalDateTime from, LocalDateTime to) {
+        List<Member> results = jdbcTemplate.query(
+                "select * from MEMBER where REGDATE between ? and ?" +
+                        "order by REGDATE desc",
+                (rs, rowNum) -> {
+                    Member member = new Member(
+                            rs.getString("EMAIL"),
+                            rs.getString("PASSWORD"),
+                            rs.getString("NAME"),
+                            rs.getTimestamp("REGDATE").toLocalDateTime()
+                    );
+                    member.setId(rs.getLong("ID"));
+                    return member;
+                },
+                from, to
+        );
+        return results;
     }
 }

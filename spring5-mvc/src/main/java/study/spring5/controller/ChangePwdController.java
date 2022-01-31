@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import study.spring5.command.ChangePwdCommand;
 import study.spring5.domain.AuthInfo;
 import study.spring5.error.WrongIdPasswordException;
 import study.spring5.service.ChangePasswordService;
+import study.spring5.validator.ChangePwdCommandValidator;
 
 import javax.servlet.http.HttpSession;
 
