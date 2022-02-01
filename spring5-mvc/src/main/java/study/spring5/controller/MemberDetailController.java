@@ -1,7 +1,9 @@
 package study.spring5.controller;
 
+import org.springframework.beans.TypeMismatchException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import study.spring5.domain.Member;
@@ -25,5 +27,15 @@ public class MemberDetailController {
         }
         model.addAttribute("member", member);
         return "member/memberDetail";
+    }
+
+    @ExceptionHandler(TypeMismatchException.class)
+    public String handleTypeMismatchException() {
+        return "errors/invalidId";
+    }
+
+    @ExceptionHandler(MemberNotFoundException.class)
+    public String handlerNotFoundException() {
+        return "errors/noMember";
     }
 }
