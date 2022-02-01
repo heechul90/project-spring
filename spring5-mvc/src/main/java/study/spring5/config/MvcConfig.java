@@ -60,8 +60,9 @@ public class MvcConfig implements WebMvcConfigurer {
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         ObjectMapper objectMapper = Jackson2ObjectMapperBuilder
                 .json()
+                .simpleDateFormat("yyyyMMddHHmm")
                 .featuresToDisable(SerializationFeature.WRITE_DATE_KEYS_AS_TIMESTAMPS)
-                 .build();
+                .build();
         converters.add(0, new MappingJackson2HttpMessageConverter(objectMapper));
     }
 }
