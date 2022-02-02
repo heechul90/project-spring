@@ -79,7 +79,7 @@ public class ControllerConfig {
     public RestMemberController restApi() {
         RestMemberController controller = new RestMemberController();
         controller.setMemberDao(memberDao);
-        controller.setMemberRegisterService(memberRegisterService);
+        controller.setRegisterService(memberRegisterService);
         return controller;
     }
 }
